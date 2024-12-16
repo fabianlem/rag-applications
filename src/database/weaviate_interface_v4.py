@@ -63,7 +63,7 @@ class WeaviateWCS:
                 raise ValueError(f'OpenAI API key must be provided to use this model: {self.model_name_or_path}')
             self.model = OpenAI(api_key=openai_api_key)
         else: 
-            self.model = SentenceTransformer(self.model_name_or_path) if self.model_name_or_path else None
+            self.model = SentenceTransformer(self.model_name_or_path, trust_remote_code=True) if self.model_name_or_path else None
 
         self.return_properties = ['guest', 'title', 'summary', 'content', 'video_id', 'doc_id', 'episode_url', 'thumbnail_url']
 
